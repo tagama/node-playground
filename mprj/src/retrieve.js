@@ -1,5 +1,5 @@
-const rp = require('request-promise');
-const R = require('ramda');
+import rp from 'request-promise';
+import R from 'ramda';
 
 const _withOptions = (site_url) => {
     var config = {

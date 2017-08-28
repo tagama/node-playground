@@ -1,2 +1,5 @@
 node_modules
 data.json
+coverage
+lib
+.nyc_output
