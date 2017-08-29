@@ -6,24 +6,20 @@ var _ = require('ramda');
 //==============
 // Refactor to remove all arguments by partially applying the function
 
-var words = function(str) {
-  return split(' ', str);
-};
+var words = _.split(' ');
 
 // Exercise 1a
 //==============
 // Use map to make a new words fn that works on an array of strings.
 
-var sentences = undefined;
+var sentences = _.map(words);
 
 
 // Exercise 2
 //==============
 // Refactor to remove all arguments by partially applying the functions
 
-var filterQs = function(xs) {
-  return filter(function(x){ return match(/q/i, x);  }, xs);
-};
+var filterQs = _.filter(match(/q/i));
 
 
 // Exercise 3
@@ -34,25 +30,22 @@ var filterQs = function(xs) {
 var _keepHighest = function(x,y){ return x >= y ? x : y; };
 
 // REFACTOR THIS ONE:
-var max = function(xs) {
-  return reduce(function(acc, x){
-    return _keepHighest(acc, x);
-  }, -Infinity, xs);
-};
+var max = _.reduce(_keepHighest, -Infinity);
 
   
 // Bonus 1:
 // ============
 // wrap array's slice to be functional and curried.
 // //[1,2,3].slice(0, 2)
-var slice = undefined;
+//Zero-based index before which to end extraction. slice extracts up to but not including end.
+var slice = _.curry((start, end, array) => array.slice(start, end));
 
 
 // Bonus 2:
 // ============
 // Use slice to define a function "take" that returns n elements from the beginning of an array. Make it curried.
 // For ['a', 'b', 'c'] with n=2 it should return ['a', 'b']
-var take = undefined;
+var take = slice(0);
 
 
 module.exports = { words: words,
